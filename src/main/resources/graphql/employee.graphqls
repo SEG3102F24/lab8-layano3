@@ -17,10 +17,22 @@ input CreateEmployeeInput {
     email: String!
 }
 
+input UpdateEmployeeInput {
+    name: String
+    dateOfBirth: String
+    city: String
+    salary: Float
+    gender: String
+    email: String
+}
+
 type Query {
     employees: [Employee!]!
+    employeeById(id: ID!): Employee
 }
 
 type Mutation {
     newEmployee(createEmployeeInput: CreateEmployeeInput!): Employee!
+    updateEmployee(id: ID!, input: UpdateEmployeeInput!): Employee
+    deleteEmployee(id: ID!): Boolean
 }
